@@ -1,0 +1,17 @@
+{
+  "name": "git-branch-time-tracking",
+  "version": "1.0.0",
+  "description": "track tiem that I need for a git branch",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "hungHoangDang",
+  "license": "ISC",
+  "dependencies": {
+    "moment": "^2.24.0",
+    "node-fetch": "^2.6.0",
+    "nodemon": "^1.19.1"
+  }
+}
