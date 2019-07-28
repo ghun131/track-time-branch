@@ -1,17 +1,20 @@
+// get current repo name for standard case
+
 const fetch = require('node-fetch');
 const moment = require('moment');
-
+const pathName = __dirname.split('/');
 const commands = process.argv.slice(' ');
-const projectName = commands[2];
-const branchName = commands[3];
+let projectName = pathName[pathName.length - 1];
+if (commands[2]) {
+  projectName = commands[2];
+}
 const today = moment().format().slice(0, 10);
-const startedDateArr = moment().subtract(14, 'days').calendar().split('/');
+const startedDateArr = moment().subtract(13, 'days').calendar().split('/');
 const startedDateStr = `${startedDateArr[2]}-${startedDateArr[0]}-${startedDateArr[1]}`
-
 
 const fetchData = () => {
   return fetch(
-    `https://wakatime.com/api/v1/users/current/summaries?start=${startedDateStr}&end=${today}&project=${projectName}&branches=${branchName}&cache=true`,
+    `https://wakatime.com/api/v1/users/current/summaries?start=${startedDateStr}&end=${today}&project=${projectName}&cache=true`,
     {
       method: "GET",
       headers: {
@@ -44,19 +47,14 @@ let result = await fetchData();
   if (result) {
     result = JSON.parse(result);
   }
-  const totalTimeArr = result.data.map(item => item.branches[0] && item.branches[0].total_seconds)
-  let totalTime = totalTimeArr.reduce((acc,sec) => {
-    if (sec) {
-      acc += sec
-    }
-    return acc;
-  })
-  totalTime = Math.round(totalTime)
-  const sendingTime = formatTime(totalTime)
-  const payload = {
-    [result.branches]: sendingTime
+const availBraches = result.available_branches
+const branchesWithTime = result.data.reduce((acc, val) => [...acc, ...val.branches], []);
+const presentTime = branchesWithTime.reduce((acc, val) => {
+  if (availBraches.includes(val.name)) {
+    acc[val.name] = formatTime(val.total_seconds);
   }
-  console.log(payload)
-  return payload;
+  return acc
+}, {})
+  // use chalk to color the output
+  console.log(presentTime)
 })()
-  
