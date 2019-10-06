@@ -1,5 +1,7 @@
 ## Todos
 
+When push code, remember to reset credential
+
 - [ ] Simplify the command line, currently it is `node <filename>`
 - [ ] Simplify installation process
     - `npm istall <my package>` should make an track_time.js file at the root folder
@@ -10,4 +12,3 @@
 - [x] Publish it as an npm package
 - [ ] Format the output to look better
 
-some change to make this file longer
