@@ -1,15 +1,28 @@
 {
-  "name": "@hung-hoang-dang/git-branch-time-tracking",
-  "version": "1.0.1",
+  "name": "project-time",
+  "version": "1.0.0",
   "description": "track tiem that I need for a git branch",
-  "main": "index.js",
+  "main": "src/index.js",
+  "bin": {
+    "project-time": "bin/tell-time",
+    "tell-time": "bin/tell-time"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
+  "keywords": [
+    "cli",
+    "tell-time"
+  ],
   "author": "hungHoangDang",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
+    "chalk": "^2.4.2",
+    "esm": "^3.2.25",
+    "log-symbols": "^3.0.0",
     "moment": "^2.24.0",
     "node-fetch": "^2.6.0",
     "nodemon": "^1.19.1"

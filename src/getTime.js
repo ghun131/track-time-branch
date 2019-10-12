@@ -1,6 +1,9 @@
-const fs = require("fs");
-const fetch = require("node-fetch");
-const moment = require("moment");
+import fs from "fs";
+import fetch from "node-fetch";
+import moment from "moment";
+import chalk from "chalk";
+import logSymbol from "log-symbols";
+import prettyOutput from "./prettyOutput";
 const pathName = __dirname.split("/");
 
 const formatTime = seconds => {
@@ -19,8 +22,7 @@ const formatTime = seconds => {
 };
 
 const fetchData = (base64Key, commands) => {
-  const projectName = commands[2] ? commands[2] : pathName[pathName.length - 1]
-
+  const projectName = commands[2] ? commands[2] : pathName[pathName.length - 2];
   const today = moment()
     .format()
     .slice(0, 10);
@@ -63,6 +65,8 @@ async function getTime(commands) {
   if (result) {
     result = JSON.parse(result);
   }
+
+
   const availBraches = result.available_branches;
   const branchesWithTime = result.data.reduce(
     (acc, val) => [...acc, ...val.branches],
@@ -75,8 +79,12 @@ async function getTime(commands) {
     return acc;
   }, {});
   // use chalk to color the output
+    if (Object.keys(presentTime).length === 0) {
+    console.log(logSymbol.error, chalk.bold.red("Error, please try again!"));
+    return;
+  }
   console.log(presentTime);
   // format the result
 }
 
-module.exports = getTime;
+export default getTime;

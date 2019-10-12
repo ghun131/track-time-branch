@@ -2,7 +2,7 @@
 
 When push code, remember to reset credential
 
-- [ ] Simplify the command line, currently it is `node <filename>`
+- [x] Simplify the command line, currently it is `node <filename>`
 - [ ] Webpack to optimize the code
 - [ ] Simplify installation process
     - `npm istall <my package>` should make an track_time.js file at the root folder
