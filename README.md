@@ -1,6 +1,6 @@
-This package built by using WakaTime api.
+This package built by using WakaTime api to track the amount of time you spend on your IDE
 
-###Installation
+### Installation
 First step:
 ```
 npm i project-time
@@ -15,7 +15,7 @@ tell-time --install <your_secret_api_key>
 ```
 To get `<your_secret_api_key>`, please go to [Waka Time](https://wakatime.com/settings/account)
 
-###Usage
+### Usage
 To get the amount of time you spend on your opening project (your current folder)
 ```
 tell-time
