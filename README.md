@@ -16,12 +16,12 @@ tell-time --install <your_secret_api_key>
 To get `<your_secret_api_key>`, please go to [Waka Time](https://wakatime.com/settings/account)
 
 ###Usage
-To get the amount of time you spend on master
+To get the amount of time you spend on your opening project (your current folder)
 ```
 tell-time
 ```
 
-With other branch, please enter branch name
+With other project, please enter
 ```
-tell-time <branch-name>
+tell-time <project-name>
 ```
