@@ -66,7 +66,6 @@ async function getTime(commands) {
     result = JSON.parse(result);
   }
 
-
   const availBraches = result.available_branches;
   const branchesWithTime = result.data.reduce(
     (acc, val) => [...acc, ...val.branches],
@@ -78,12 +77,11 @@ async function getTime(commands) {
     }
     return acc;
   }, {});
-  // use chalk to color the output
-    if (Object.keys(presentTime).length === 0) {
+  if (Object.keys(presentTime).length === 0) {
     console.log(logSymbol.error, chalk.bold.red("Error, please try again!"));
     return;
   }
-  console.log(presentTime);
+  prettyOutput(presentTime)
   // format the result
 }
 
