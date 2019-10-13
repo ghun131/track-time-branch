@@ -1,4 +1,4 @@
-This package built by using WakaTime api. Doesn't work quite well yet.
+This package built by using WakaTime api.
 
 ###Installation
 ```
